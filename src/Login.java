@@ -10,13 +10,10 @@ public class Login {
         System.out.println("         CADASTRO");
         System.out.println("_____________________________ ");
 
-        //Processo de criação de usuário:
         System.out.print("Digite seu nome completo: ");
         login = sc.nextLine();
         middleLogin = login.split(" ");
-        //Fim do processo
 
-        //Processo de tratamento de login
         char firstLetter = middleLogin[0].charAt(0);
         int loginSize = middleLogin.length;
         String lastName = middleLogin[loginSize - 1];
@@ -24,42 +21,34 @@ public class Login {
         finalLogin = finalLogin.toLowerCase();
         System.out.println("Novo usuario " + finalLogin);
         login = finalLogin;
-        //Fim do processo
 
         System.out.print("Senha: ");
         password = sc.nextLine();
 
-        //Tratamento de senha
         boolean hasMinDigits = false, hasUpperCase = false, hasLowerCase = false, hasNumber = false, hasMiscChar = false;
 
-        //8 Dígitos
         if(password.length() >= 8){
             hasMinDigits = true;
         }
 
         for (int i = 0; i < password.length(); i++){
-            //Letra maiúscula
             if (Character.isUpperCase(password.charAt(i))){
                 hasUpperCase = true;
                 continue;
             }
-            //Letra minúscula
             if (Character.isLowerCase(password.charAt(i))){
                 hasLowerCase = true;
                 continue;
             }
-            //Número
             if (Character.isDigit(password.charAt(i))){
                 hasNumber = true;
                 continue;
             }
-            //Caractere especial
             if (String.valueOf(password.charAt(i)).equals("!") || String.valueOf(password.charAt(i)).equals("@") || String.valueOf(password.charAt(i)).equals("#")){
                 hasMiscChar = true;
             }
         }
 
-        //Validação senha & acesso
         if (hasMinDigits && hasLowerCase && hasUpperCase && hasMiscChar && hasNumber){
             System.out.println("Senha cadastrada");
             System.out.printf("\n");
